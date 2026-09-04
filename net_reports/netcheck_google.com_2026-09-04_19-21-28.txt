@@ -1,0 +1,126 @@
+===== NETWORK TROUBLESHOOT REPORT for google.com =====
+Generated on: Fri Sep  4 07:21:28 PM IST 2026
+
+----- Network Interfaces -----
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: wlp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether f8:54:f6:23:b0:02 brd ff:ff:ff:ff:ff:ff
+    inet 100.128.162.80/20 brd 100.128.175.255 scope global dynamic noprefixroute wlp1s0
+       valid_lft 81903sec preferred_lft 81903sec
+    inet6 fe80::5881:b946:25e4:2878/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: br-6dcaff44f5da: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether ae:0f:a3:d3:36:98 brd ff:ff:ff:ff:ff:ff
+    inet 172.19.0.1/16 brd 172.19.255.255 scope global br-6dcaff44f5da
+       valid_lft forever preferred_lft forever
+    inet6 fe80::ac0f:a3ff:fed3:3698/64 scope link 
+       valid_lft forever preferred_lft forever
+4: br-d0d3774495e3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether 9e:ca:d3:93:79:2c brd ff:ff:ff:ff:ff:ff
+    inet 172.20.0.1/16 brd 172.20.255.255 scope global br-d0d3774495e3
+       valid_lft forever preferred_lft forever
+    inet6 fe80::9cca:d3ff:fe93:792c/64 scope link 
+       valid_lft forever preferred_lft forever
+5: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 86:bc:17:4b:14:07 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+6: br-16ae39be5339: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 4a:ba:5b:71:4a:e8 brd ff:ff:ff:ff:ff:ff
+    inet 172.18.0.1/16 brd 172.18.255.255 scope global br-16ae39be5339
+       valid_lft forever preferred_lft forever
+7: vetha67849f@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-d0d3774495e3 state UP group default 
+    link/ether 1e:a3:a3:72:93:d8 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet6 fe80::1ca3:a3ff:fe72:93d8/64 scope link 
+       valid_lft forever preferred_lft forever
+8: veth0dbb70f@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-6dcaff44f5da state UP group default 
+    link/ether a2:f9:83:cb:f2:e5 brd ff:ff:ff:ff:ff:ff link-netnsid 1
+    inet6 fe80::a0f9:83ff:fecb:f2e5/64 scope link 
+       valid_lft forever preferred_lft forever
+
+----- Routing Table -----
+default via 100.128.160.1 dev wlp1s0 proto dhcp src 100.128.162.80 metric 600 
+100.128.160.0/20 dev wlp1s0 proto kernel scope link src 100.128.162.80 metric 600 
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown 
+172.18.0.0/16 dev br-16ae39be5339 proto kernel scope link src 172.18.0.1 linkdown 
+172.19.0.0/16 dev br-6dcaff44f5da proto kernel scope link src 172.19.0.1 
+172.20.0.0/16 dev br-d0d3774495e3 proto kernel scope link src 172.20.0.1 
+
+----- Ping Test (4 packets) -----
+PING google.com (142.250.207.174) 56(84) bytes of data.
+64 bytes from pnbomb-bl-in-f14.1e100.net (142.250.207.174): icmp_seq=1 ttl=120 time=21.8 ms
+64 bytes from pnbomb-bl-in-f14.1e100.net (142.250.207.174): icmp_seq=2 ttl=120 time=14.9 ms
+64 bytes from pnbomb-bl-in-f14.1e100.net (142.250.207.174): icmp_seq=3 ttl=120 time=20.7 ms
+64 bytes from pnbomb-bl-in-f14.1e100.net (142.250.207.174): icmp_seq=4 ttl=120 time=17.1 ms
+
+--- google.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3004ms
+rtt min/avg/max/mdev = 14.861/18.619/21.761/2.767 ms
+
+----- DNS Resolution -----
+Server:		127.0.0.53
+Address:	127.0.0.53#53
+
+Non-authoritative answer:
+Name:	google.com
+Address: 142.250.207.174
+Name:	google.com
+Address: 2404:6800:4009:807::200e
+
+
+----- Traceroute -----
+traceroute to google.com (142.250.207.174), 64 hops max
+  1   100.128.160.1  29.191ms  4.603ms  11.615ms 
+  2   114.79.130.29  162.065ms  30.719ms  69.743ms 
+  3   72.14.208.165  47.813ms  114.646ms  77.918ms 
+  4   192.178.84.175  18.640ms  45.106ms  17.202ms 
+  5   142.250.214.111  75.294ms  92.378ms  22.776ms 
+  6   142.250.207.174  45.790ms  60.324ms  30.146ms 
+
+----- Local Listening Ports -----
+Netid State  Recv-Q Send-Q  Local Address:Port  Peer Address:PortProcess                                     
+udp   UNCONN 0      0          172.19.0.1:42189      0.0.0.0:*    users:(("chrome",pid=4537,fd=84))          
+udp   UNCONN 0      0          172.20.0.1:59361      0.0.0.0:*    users:(("chrome",pid=4537,fd=184))         
+udp   UNCONN 0      0      100.128.162.80:59572      0.0.0.0:*    users:(("chrome",pid=4537,fd=187))         
+udp   UNCONN 0      0             0.0.0.0:38106      0.0.0.0:*                                               
+udp   UNCONN 0      0         224.0.0.251:5353       0.0.0.0:*    users:(("chrome",pid=4537,fd=173))         
+udp   UNCONN 0      0         224.0.0.251:5353       0.0.0.0:*    users:(("chrome",pid=4537,fd=166))         
+udp   UNCONN 0      0         224.0.0.251:5353       0.0.0.0:*    users:(("chrome",pid=4537,fd=158))         
+udp   UNCONN 0      0         224.0.0.251:5353       0.0.0.0:*    users:(("chrome",pid=4490,fd=819))         
+udp   UNCONN 0      0         224.0.0.251:5353       0.0.0.0:*    users:(("chrome",pid=4490,fd=818))         
+udp   UNCONN 0      0         224.0.0.251:5353       0.0.0.0:*    users:(("chrome",pid=4490,fd=817))         
+udp   UNCONN 0      0             0.0.0.0:5353       0.0.0.0:*                                               
+udp   UNCONN 0      0          127.0.0.54:53         0.0.0.0:*                                               
+udp   UNCONN 0      0       127.0.0.53%lo:53         0.0.0.0:*                                               
+udp   UNCONN 0      0                [::]:59374         [::]:*                                               
+udp   UNCONN 0      0                [::]:5353          [::]:*                                               
+tcp   LISTEN 0      151         127.0.0.1:3306       0.0.0.0:*                                               
+tcp   LISTEN 0      511         127.0.0.1:35085      0.0.0.0:*    users:(("antigravity",pid=29907,fd=51))    
+tcp   LISTEN 0      4096          0.0.0.0:6334       0.0.0.0:*                                               
+tcp   LISTEN 0      4096          0.0.0.0:6333       0.0.0.0:*                                               
+tcp   LISTEN 0      4096       127.0.0.54:53         0.0.0.0:*                                               
+tcp   LISTEN 0      4096        127.0.0.1:41163      0.0.0.0:*    users:(("language_server",pid=30171,fd=9)) 
+tcp   LISTEN 0      4096        127.0.0.1:32827      0.0.0.0:*    users:(("language_server",pid=14773,fd=18))
+tcp   LISTEN 0      70          127.0.0.1:33060      0.0.0.0:*                                               
+tcp   LISTEN 0      4096        127.0.0.1:33461      0.0.0.0:*    users:(("language_server",pid=30171,fd=8)) 
+tcp   LISTEN 0      4096        127.0.0.1:631        0.0.0.0:*                                               
+tcp   LISTEN 0      511         127.0.0.1:33369      0.0.0.0:*    users:(("antigravity",pid=14133,fd=80))    
+tcp   LISTEN 0      4096    127.0.0.53%lo:53         0.0.0.0:*                                               
+tcp   LISTEN 0      511         127.0.0.1:6379       0.0.0.0:*                                               
+tcp   LISTEN 0      511         127.0.0.1:39799      0.0.0.0:*    users:(("antigravity",pid=14133,fd=89))    
+tcp   LISTEN 0      4096          0.0.0.0:27017      0.0.0.0:*                                               
+tcp   LISTEN 0      4096        127.0.0.1:38313      0.0.0.0:*    users:(("language_server",pid=30171,fd=17))
+tcp   LISTEN 0      4096        127.0.0.1:37453      0.0.0.0:*    users:(("language_server",pid=14773,fd=21))
+tcp   LISTEN 0      4096            [::1]:631           [::]:*                                               
+tcp   LISTEN 0      4096             [::]:6334          [::]:*                                               
+tcp   LISTEN 0      4096             [::]:6333          [::]:*                                               
+tcp   LISTEN 0      4096             [::]:27017         [::]:*                                               
+tcp   LISTEN 0      511             [::1]:6379          [::]:*                                               
+
+----- Summary -----
+Result: google.com is REACHABLE.
